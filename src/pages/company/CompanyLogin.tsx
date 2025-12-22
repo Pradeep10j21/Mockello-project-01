@@ -68,15 +68,15 @@ const CompanyLogin = () => {
   };
   return <div className="min-h-screen bg-background flex">
       {/* Left Panel - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 gradient-accent p-12 flex-col justify-between relative overflow-hidden bg-primary">
+      <div className="hidden lg:flex lg:w-1/2 gradient-accent p-12 flex-col justify-between relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M30%205C17.3%205%207%2015.3%207%2028c0%208.5%204.6%2015.9%2011.5%2019.9L30%2055l11.5-7.1C48.4%2043.9%2053%2036.5%2053%2028%2053%2015.3%2042.7%205%2030%205z%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221%22%20opacity%3D%220.1%22%2F%3E%3C%2Fsvg%3E')] opacity-20"></div>
         
         <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-8 text-sidebar-foreground">
             <div className="w-12 h-12 rounded-xl backdrop-blur-sm flex items-center justify-center bg-secondary-foreground">
               <Leaf className="w-7 h-7 text-white" />
             </div>
-            <span className="font-display text-2xl font-bold text-primary">GenZ Placify</span>
+            <span className="font-display text-2xl font-bold text-primary-foreground">GenZ Placify</span>
           </div>
           
           <h1 className="font-display text-4xl font-bold mb-4 text-primary">
