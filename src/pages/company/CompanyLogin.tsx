@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-
 const CompanyLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,15 +14,16 @@ const CompanyLogin = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!loginEmail || !loginPassword) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -33,19 +33,18 @@ const CompanyLogin = () => {
       setIsLoading(false);
       toast({
         title: "Welcome back!",
-        description: "Successfully logged in",
+        description: "Successfully logged in"
       });
       navigate("/company/dashboard");
     }, 1000);
   };
-
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!signupEmail || !signupPassword || !confirmPassword) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -53,7 +52,7 @@ const CompanyLogin = () => {
       toast({
         title: "Error",
         description: "Passwords do not match",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -62,30 +61,28 @@ const CompanyLogin = () => {
       setIsLoading(false);
       toast({
         title: "Account created!",
-        description: "Please complete your company profile",
+        description: "Please complete your company profile"
       });
       navigate("/company/onboarding");
     }, 1000);
   };
-
-  return (
-    <div className="min-h-screen bg-background flex">
+  return <div className="min-h-screen bg-background flex">
       {/* Left Panel - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 gradient-accent p-12 flex-col justify-between relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 gradient-accent p-12 flex-col justify-between relative overflow-hidden bg-primary">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M30%205C17.3%205%207%2015.3%207%2028c0%208.5%204.6%2015.9%2011.5%2019.9L30%2055l11.5-7.1C48.4%2043.9%2053%2036.5%2053%2028%2053%2015.3%2042.7%205%2030%205z%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221%22%20opacity%3D%220.1%22%2F%3E%3C%2Fsvg%3E')] opacity-20"></div>
         
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl backdrop-blur-sm flex items-center justify-center bg-secondary-foreground">
               <Leaf className="w-7 h-7 text-white" />
             </div>
-            <span className="font-display text-2xl font-bold text-white">GenZ Placify</span>
+            <span className="font-display text-2xl font-bold text-primary">GenZ Placify</span>
           </div>
           
-          <h1 className="font-display text-4xl font-bold text-white mb-4">
+          <h1 className="font-display text-4xl font-bold mb-4 text-primary">
             Company Portal
           </h1>
-          <p className="text-white/80 text-lg max-w-md">
+          <p className="text-lg max-w-md text-primary">
             Connect with top colleges and find the perfect candidates for your organization.
           </p>
         </div>
@@ -148,28 +145,12 @@ const CompanyLogin = () => {
                 <div className="space-y-4">
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type="email"
-                      placeholder="Company Email"
-                      className="pl-10"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                    />
+                    <Input type="email" placeholder="Company Email" className="pl-10" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} />
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      className="pl-10 pr-10"
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    >
+                    <Input type={showPassword ? "text" : "password"} placeholder="Password" className="pl-10 pr-10" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
@@ -192,40 +173,18 @@ const CompanyLogin = () => {
                 <div className="space-y-4">
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type="email"
-                      placeholder="Company Email"
-                      className="pl-10"
-                      value={signupEmail}
-                      onChange={(e) => setSignupEmail(e.target.value)}
-                    />
+                    <Input type="email" placeholder="Company Email" className="pl-10" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} />
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      className="pl-10 pr-10"
-                      value={signupPassword}
-                      onChange={(e) => setSignupPassword(e.target.value)}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    >
+                    <Input type={showPassword ? "text" : "password"} placeholder="Password" className="pl-10 pr-10" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Confirm Password"
-                      className="pl-10"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                    <Input type={showPassword ? "text" : "password"} placeholder="Confirm Password" className="pl-10" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                   </div>
                 </div>
 
@@ -243,8 +202,6 @@ const CompanyLogin = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CompanyLogin;
