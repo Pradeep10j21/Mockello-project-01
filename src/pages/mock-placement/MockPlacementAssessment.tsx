@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, CheckCircle, Lightbulb, Brain, Sparkles, RefreshCw, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { questions, getCategoryLabel, getDifficultyColor } from '@/data/questions';
-import { AssessmentPhase, FeedbackState, UserAnswer, AssessmentResult } from '@/types/assessment';
+import { AssessmentPhase, FeedbackState, UserAnswer } from '@/types/assessment';
+import LearningMode from '@/components/assessment/LearningMode';
 
 const MockPlacementAssessment = () => {
   const [phase, setPhase] = useState<AssessmentPhase>('welcome');
@@ -207,25 +208,23 @@ const MockPlacementAssessment = () => {
             <Button onClick={handleCheckAnswer} disabled={selectedAnswer === null} className="w-full btn-forest">
               Check Answer
             </Button>
-          ) : (
-            <div className={`p-4 rounded-xl mb-4 ${feedbackState === 'correct' ? 'bg-secondary/10 border border-secondary' : 'bg-accent/10 border border-accent'}`}>
+          ) : feedbackState === 'correct' ? (
+            <div className="p-4 rounded-xl bg-secondary/10 border border-secondary">
               <div className="flex items-center gap-2 mb-2">
-                {feedbackState === 'correct' ? (
-                  <><CheckCircle className="w-5 h-5 text-secondary" /><span className="font-semibold text-secondary">Excellent!</span></>
-                ) : (
-                  <><Lightbulb className="w-5 h-5 text-accent" /><span className="font-semibold text-accent">Let's understand this</span></>
-                )}
+                <CheckCircle className="w-5 h-5 text-secondary" />
+                <span className="font-semibold text-secondary">Excellent!</span>
               </div>
-              <p className="text-sm text-foreground">{currentQuestion.explanation}</p>
-              {currentQuestion.tip && (
-                <p className="text-sm text-muted-foreground mt-2 flex items-center gap-2">
-                  <Brain className="w-4 h-4" /> Tip: {currentQuestion.tip}
-                </p>
-              )}
-              <Button onClick={handleContinue} className="w-full mt-4 btn-forest">
+              <p className="text-sm text-foreground mb-4">{currentQuestion.explanation}</p>
+              <Button onClick={handleContinue} className="w-full btn-forest">
                 Continue <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
+          ) : (
+            <LearningMode 
+              question={currentQuestion} 
+              selectedAnswer={selectedAnswer!} 
+              onContinue={handleContinue} 
+            />
           )}
         </div>
       </div>
